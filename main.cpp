@@ -23,7 +23,8 @@ uintptr_t GetModuleBaseAddress(DWORD procId, const wchar_t* modName) {
 
         /*
             Recupera informacoes sobre o primeiro modulo do processo especificado.
-            ID do retorno da funcao CreateToolhelp32Snapshot
+            O primeiro parametro é o ID do retorno da funcao CreateToolhelp32Snapshot.
+            O segundo parametro é um ponteiro para a estrutura MODULEENTRY32W.
         */
         if(Module32FirstW(hSnap, &modEntry)) {
             do
@@ -65,5 +66,4 @@ int main() {
     if(!modBase) {
         cout << "Not found base address" << endl;
     }
-    cout << modBase << endl;
 }
